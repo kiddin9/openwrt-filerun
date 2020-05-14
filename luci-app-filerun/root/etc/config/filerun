@@ -2,7 +2,6 @@
 config filerun 'main'
 	option memory_limit '100M'
 	option upload_max_filesize '200M'
-	option storage_device_path '/mnt/sda1'
 	option port '8081'
 	option enable '0'
 	option kodomain ''
