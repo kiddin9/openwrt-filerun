@@ -11,9 +11,6 @@ storage_device_path=$(uci -q get $CONFIG.main.storage_device_path)
 gen_nginx_config() {
 	port=$(uci -q get $CONFIG.main.port)
 	kodomain=$(uci -q get $CONFIG.main.kodomain)
-	[ ! -f $KOD_NGINX_CONFIG ] && {
-	touch $KOD_NGINX_CONFIG
-	}
 sed -i "s?listen .*?listen $port;?g" $KOD_NGINX_CONFIG
 [ $kodomain ] && {
 	sed -i "s?server_name .*?server_name $kodomain;?g" $KOD_NGINX_CONFIG
@@ -29,15 +26,12 @@ gen_php_config() {
 	sed -i "s/upload_max_filesize.*/upload_max_filesize = $upload_max_filesize/g" /etc/php7/custom.ini
 	sed -i "s/client_max_body_size.*/client_max_body_size $upload_max_filesize;/g" $KOD_NGINX_CONFIG
 	sed -i "s?open_basedir=.document?open_basedir=$storage_device_path:\$document?g" $KOD_NGINX_CONFIG
+	sed -i "s?open_basedir=.document?open_basedir=$storage_device_path:\$document?g" /etc/nginx/conf.d/_lan.conf
 }
 
 start() {
 	ENABLED=$(uci -q get $CONFIG.main.enable)
 	[ "$ENABLED" = "0" ] && return 0
-	sed -i "s?DATA_PATH.*?DATA_PATH', '$storage_device_path/kodata/');?g" /www/kod/config/define.php
-	[ ! -d "$storage_device_path/kodata" ] && {
-	cp -R /www/kod/data $storage_device_path/kodata
-	}
 	gen_php_config
 	/etc/init.d/php7-fpm start
 	gen_nginx_config
