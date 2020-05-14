@@ -30,13 +30,6 @@ o = s:option(Value, "upload_max_filesize",
 o.default = "200M"
 o.rmempty = false
 
-o = s:option(Value, "storage_device_path", translate("Storage device path"),
-             translate(
-                 "It is recommended to insert a usb flash drive or hard disk and enter the path. For example, /mnt/sda1/"))
-o.default = "/mnt/sda1/"
-o.placeholder = "/mnt/sda1/"
-o.rmempty = false
-
 s:append(Template("filerun/version"))
 
 return m
