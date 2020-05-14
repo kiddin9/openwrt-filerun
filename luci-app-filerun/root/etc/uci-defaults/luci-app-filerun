@@ -11,5 +11,6 @@ EOF
 /etc/init.d/mysqld disable
 sed -i 's/service_start $PROG/service_start $PROG -R/g' /etc/init.d/php7-fpm
 sed -i "s/user =.*/user = root/g" /etc/php7-fpm.d/www.conf
+sed -i '/init_lan/d' /etc/init.d/nginx
 rm -f /tmp/luci-indexcache
 exit 0
