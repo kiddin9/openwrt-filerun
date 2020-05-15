@@ -23,7 +23,7 @@ define Package/filerun
 	+@BUILD_PATENTED +libx264 +libffmpeg-custom +@FFMPEG_CUSTOM_PATENTED +@FFMPEG_CUSTOM_DECODER_h264
 endef
 
-define Package/luci-app-php-kodexplorer/extra_provides
+define Package/filerun/extra_provides
     echo 'libm.so.6'; \
     echo 'librt.so.1';
 endef
