@@ -25,6 +25,7 @@ endef
 
 define Package/filerun/extra_provides
     echo 'libm.so.6'; \
+    echo 'libc.so.6'; \
     echo 'librt.so.1';
 endef
 
