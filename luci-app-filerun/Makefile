@@ -10,4 +10,9 @@ PKG_LICENSE:=Apache-2.0
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
+define Package/luci-app-filerun/extra_provides
+    echo 'libc.so.6'; \
+    echo 'librt.so.1';
+endef
+
 # call BuildPackage - OpenWrt buildroot signature
