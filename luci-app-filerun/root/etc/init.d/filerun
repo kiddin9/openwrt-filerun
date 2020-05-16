@@ -37,6 +37,17 @@ start() {
 	/etc/init.d/mysqld start
 }
 
+start() {
+	ENABLED=$(uci -q get $CONFIG.main.enable)
+	[ "$ENABLED" = "0" ] && return 0
+	gen_php_config
+	/etc/init.d/php7-fpm start
+	gen_nginx_config
+	/etc/init.d/nginx reload
+	[ f "/usr/local/mysql" ] || mysql_install_db
+	/etc/init.d/mysqld start
+}
+
 stop() {
 	/etc/init.d/php7-fpm stop
 	/etc/init.d/mysqld stop
@@ -44,11 +55,6 @@ stop() {
 	killall -9 php-fpm
 	}
 	[ "`pgrep mysqld`" ] && {
-	killall -9 mysqld
+	killall mysqld
 	}
-}
-
-restart() {
-	stop
-	start
 }
