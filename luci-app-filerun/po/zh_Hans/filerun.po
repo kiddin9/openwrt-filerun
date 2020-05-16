@@ -1,11 +1,5 @@
-msgid "Start PHP"
-msgstr "启动PHP服务"
-
-msgid "Enable PHP"
-msgstr "启用PHP && 可道云"
-
-msgid "Stop PHP"
-msgstr "终止PHP服务"
+msgid "Enable Services"
+msgstr "启用服务"
 
 msgid "FileRun Bind Domain"
 msgstr "绑定域名"
