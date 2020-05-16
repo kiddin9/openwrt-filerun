@@ -10,7 +10,7 @@ KOD_NGINX_CONFIG="/etc/nginx/conf.d/filerun.conf"
 gen_nginx_config() {
 	port=$(uci -q get $CONFIG.main.port)
 	kodomain=$(uci -q get $CONFIG.main.kodomain)
-sed -i "s?listen .*?listen $port;?g" $KOD_NGINX_CONFIG
+sed -i "s?listen [0-9]*;?listen $port;?g" $KOD_NGINX_CONFIG
 [ $kodomain ] && {
 	sed -i "s?server_name .*?server_name $kodomain;?g" $KOD_NGINX_CONFIG
 	}
