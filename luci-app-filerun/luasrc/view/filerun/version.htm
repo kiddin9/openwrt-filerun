@@ -1,6 +1,6 @@
 <%
 local filerun_path = "/www/filerun/"
-local filerun_version = luci.sys.exec("[ -f '" .. filerun_path .. "/initial_version.txt' ] && echo -n `cat " .. filerun_path .. "/initial_version.txt")
+local filerun_version = luci.sys.exec("[ -f '" .. filerun_path .. "/initial_version.txt' ] && echo -n `cat " .. filerun_path .. "/initial_version.txt`")
 -%>
 
 <% if filerun_version ~= nil and filerun_version~="" then %>
