@@ -6,6 +6,7 @@ STOP=01
 
 CONFIG="filerun"
 KOD_NGINX_CONFIG="/etc/nginx/conf.d/filerun.conf"
+dbpasswd=$(uci -q get $CONFIG.main.dbpasswd)
 
 gen_nginx_config() {
 	port=$(uci -q get $CONFIG.main.port)
@@ -33,18 +34,8 @@ start() {
 	/etc/init.d/php7-fpm start
 	gen_nginx_config
 	/etc/init.d/nginx reload
-	mysql_install_db
-	/etc/init.d/mysqld start
-}
-
-start() {
-	ENABLED=$(uci -q get $CONFIG.main.enable)
-	[ "$ENABLED" = "0" ] && return 0
-	gen_php_config
-	/etc/init.d/php7-fpm start
-	gen_nginx_config
-	/etc/init.d/nginx reload
 	[ f "/usr/local/mysql" ] || mysql_install_db
+	mysqladmin -uroot -proot password $dbpasswd
 	/etc/init.d/mysqld start
 }
 
