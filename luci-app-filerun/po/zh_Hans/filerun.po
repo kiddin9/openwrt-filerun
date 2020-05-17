@@ -7,6 +7,9 @@ msgstr "绑定域名"
 msgid "Open FileRun"
 msgstr "打开管理界面"
 
+msgid "Database Password"
+msgstr "数据库密码"
+
 msgid "Global Settings"
 msgstr "全局设置"
 
