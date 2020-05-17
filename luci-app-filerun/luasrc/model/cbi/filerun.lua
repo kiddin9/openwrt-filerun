@@ -15,6 +15,11 @@ o.placeholder = "8081"
 o.default = "8081"
 o.rmempty = false
 
+o = s:option(Value, "port", translate("Database Password"))
+o.default = "root"
+o.password = true
+o.rmempty = false
+
 o = s:option(Value, "kodomain", translate("FileRun Bind Domain"))
 o.placeholder = "filerun.xx.com"
 o.rmempty = true
