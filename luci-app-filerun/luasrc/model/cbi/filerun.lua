@@ -15,7 +15,7 @@ o.placeholder = "8081"
 o.default = "8081"
 o.rmempty = false
 
-o = s:option(Value, "port", translate("Database Password"))
+o = s:option(Value, "dbpasswd", translate("Database Password"))
 o.default = "root"
 o.password = true
 o.rmempty = false
