@@ -20,7 +20,7 @@ define Package/filerun
 	DEPENDS:=@x86_64 +luci-ssl-nginx +php7 +php7-fpm +php7-mod-ctype +php7-mod-session +php7-mod-curl +php7-mod-gd +php7-mod-json \
 	+php7-mod-mbstring +@PHP7_FILTER +php7-mod-opcache +php7-mod-sockets +php7-mod-pdo-mysql +php7-mod-mysqli +php7-mod-exif +php7-mod-xml \
 	+php7-mod-openssl +php7-mod-zip +mariadb-common +mariadb-server-base +mariadb-server +mariadb-client-base +mariadb-client \
-	+@BUILD_PATENTED +libx264 +libffmpeg-custom +ffmpeg-custom +@FFMPEG_CUSTOM_PATENTED +@FFMPEG_CUSTOM_DECODER_h264
+	+@BUILD_PATENTED +libffmpeg-custom +libx264 +ffmpeg-custom +@FFMPEG_CUSTOM_PATENTED +@FFMPEG_CUSTOM_DECODER_h264
 endef
 
 define Package/filerun/conffiles
