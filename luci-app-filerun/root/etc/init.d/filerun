@@ -6,6 +6,7 @@ STOP=10
 
 CONFIG="filerun"
 KOD_NGINX_CONFIG="/etc/nginx/conf.d/filerun.conf"
+storage_device_path=$(uci -q get $CONFIG.main.storage_device_path)
 dbpasswd=$(uci -q get $CONFIG.main.dbpasswd)
 
 gen_nginx_config() {
@@ -25,6 +26,8 @@ gen_php_config() {
 	sed -i "s/post_max_size.*/post_max_size = $upload_max_filesize/g" /etc/php7/custom.ini
 	sed -i "s/upload_max_filesize.*/upload_max_filesize = $upload_max_filesize/g" /etc/php7/custom.ini
 	sed -i "s/client_max_body_size.*/client_max_body_size $upload_max_filesize;/g" $KOD_NGINX_CONFIG
+	sed -i "s?open_basedir=.document?open_basedir=$storage_device_path:/usr/bin/:\$document?g" $KOD_NGINX_CONFIG
+	sed -i "s?open_basedir=.document?open_basedir=$storage_device_path:/usr/bin/:\$document?g" /etc/nginx/conf.d/_lan.conf
 }
 
 start() {
