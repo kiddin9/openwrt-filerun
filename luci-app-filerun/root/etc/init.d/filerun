@@ -34,12 +34,12 @@ start() {
 	ENABLED=$(uci -q get $CONFIG.main.enable)
 	[ "$ENABLED" = "0" ] && return 0
 	gen_php_config
+	[ -d "/usr/data/mysql" ] && chown mariadb:mariadb /usr/data/mysql/* || mysql_install_db
+	mysqladmin -uroot -proot password $dbpasswd
+	/etc/init.d/mysqld start
 	/etc/init.d/php7-fpm start
 	gen_nginx_config
 	/etc/init.d/nginx reload
-	[ -f "/usr/data/mysql" ] && chown mariadb:mariadb /usr/data/mysql/* || mysql_install_db
-	mysqladmin -uroot -proot password $dbpasswd
-	/etc/init.d/mysqld start
 }
 
 stop() {
