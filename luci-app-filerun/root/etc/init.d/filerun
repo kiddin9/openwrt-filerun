@@ -37,7 +37,7 @@ start() {
 	/etc/init.d/php7-fpm start
 	gen_nginx_config
 	/etc/init.d/nginx reload
-	[ -f "/usr/local/mysql" ] && chown mariadb:mariadb /usr/data/mysql/* || mysql_install_db
+	[ -f "/usr/data/mysql" ] && chown mariadb:mariadb /usr/data/mysql/* || mysql_install_db
 	mysqladmin -uroot -proot password $dbpasswd
 	/etc/init.d/mysqld start
 }
