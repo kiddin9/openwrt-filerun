@@ -1,6 +1,7 @@
 <?php return array (
   'data' => 
   array (
+    'app_title' => 'FileRun',
     'smtp_enable' => '0',
     'smtp_host' => '',
     'smtp_port' => '',
