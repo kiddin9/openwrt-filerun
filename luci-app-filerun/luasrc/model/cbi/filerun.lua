@@ -6,7 +6,7 @@ s = m:section(TypedSection, "filerun", translate("Global Settings"))
 s.anonymous = true
 s.addremove = false
 
-o = s:option(Flag, "enable", translate("Enable FileRun"))
+o = s:option(Flag, "enable", translate("Enable Services"))
 o.rmempty = false
 
 o = s:option(Value, "port", translate("FileRun Port"))
