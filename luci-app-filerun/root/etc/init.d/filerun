@@ -6,7 +6,7 @@ STOP=10
 
 CONFIG="filerun"
 KOD_NGINX_CONFIG="/etc/nginx/conf.d/filerun.conf"
-storage_device_path=$(uci -q get $CONFIG.main.storage_device_path)
+# storage_device_path=$(uci -q get $CONFIG.main.storage_device_path)
 dbpasswd=$(uci -q get $CONFIG.main.dbpasswd)
 
 gen_nginx_config() {
