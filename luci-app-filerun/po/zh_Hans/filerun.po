@@ -1,3 +1,6 @@
+msgid "FileRun"
+msgstr "FileRun网盘"
+
 msgid "Enable Services"
 msgstr "启用服务"
 
