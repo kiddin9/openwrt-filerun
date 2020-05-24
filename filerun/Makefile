@@ -36,6 +36,7 @@ define Package/filerun/install
 		$(PKG_BUILD_DIR)/{a,cron,css,customizables,images,js,logout,oauth2,ocs,oembed,panel,sounds,sso,system,weblinks,wl} \
 		$(PKG_BUILD_DIR)/{api.php,dav.php,favicon.ico,guest.php,index.php,initial_version.txt,recommended.web.config,remote.php,status.php,t.php} \
 		$(1)/www/filerun
+	find $(1)/www/filerun -type d -exec chmod +x {} \;
 endef
 
 $(eval $(call BuildPackage,filerun))
