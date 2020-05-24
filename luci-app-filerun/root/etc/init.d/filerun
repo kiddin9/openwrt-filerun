@@ -7,10 +7,10 @@ STOP=10
 CONFIG="filerun"
 KOD_NGINX_CONFIG="/etc/nginx/conf.d/filerun.conf"
 # storage_device_path=$(uci -q get $CONFIG.main.storage_device_path)
-dbpasswd=$(uci -q get $CONFIG.main.dbpasswd)
+dbpasswd=$(uci -q get $CONFIG.main.dbpasswd || echo 'root')
 
 gen_nginx_config() {
-	port=$(uci -q get $CONFIG.main.port)
+	port=$(uci -q get $CONFIG.main.port || echo '8081')
 	kodomain=$(uci -q get $CONFIG.main.kodomain)
 sed -i "s?listen [0-9]*;?listen $port;?g" $KOD_NGINX_CONFIG
 [ $kodomain ] && {
@@ -19,8 +19,8 @@ sed -i "s?listen [0-9]*;?listen $port;?g" $KOD_NGINX_CONFIG
 }
 
 gen_php_config() {
-	memory_limit=$(uci -q get $CONFIG.main.memory_limit)
-	upload_max_filesize=$(uci -q get $CONFIG.main.upload_max_filesize)
+	memory_limit=$(uci -q get $CONFIG.main.memory_limit || echo '200M')
+	upload_max_filesize=$(uci -q get $CONFIG.main.upload_max_filesize || echo '200M')
 
 	sed -i "s/memory_limit.*/memory_limit = $memory_limit/g" /etc/php7/custom.ini
 	sed -i "s/post_max_size.*/post_max_size = $upload_max_filesize/g" /etc/php7/custom.ini
