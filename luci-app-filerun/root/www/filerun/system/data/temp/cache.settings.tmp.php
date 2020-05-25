@@ -42,7 +42,7 @@
     'thumbnails_enable' => '1',
     'thumbnails_imagemagick' => 'exec',
     'thumbnails_imagemagick_path' => '/usr/bin/magick',
-    'thumbnails_size' => '170',
+    'thumbnails_size' => '205',
     'thumbnails_imagemagick_ext' => 'psd,psb,eps,tst,plt,ai,pdf,jpg,jpeg,gif,png,jpe,erf,dng,cr2,crw,3fr,fff,ppm,raw,kdc,dcr,nef,mef,mos,nrw,orf,raf,mrw,mdc,rw2,pef,x3f,srw,arw,iiq,svg',
     'thumbnails_ffmpeg' => '1',
     'thumbnails_ffmpeg_path' => '/usr/bin/ffmpeg',
