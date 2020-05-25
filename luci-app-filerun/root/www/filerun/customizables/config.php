@@ -6,3 +6,7 @@ if(!function_exists('fnmatch')) {
     } // end
 
 } // end if
+
+$config['app']['ui']['custom_js_url'] = '/customizables/custom.js';
+$config['app']['ui']['enable_favicon_ico'] = true;
+$config['app']['ui']['ReadMeFileName'] = "README";
