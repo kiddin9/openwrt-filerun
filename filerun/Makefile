@@ -17,7 +17,7 @@ define Package/filerun
 	CATEGORY:=Network
 	TITLE:=Filerun
 	PKGARCH:=all
-	DEPENDS:=@x86_64 +luci-ssl-nginx +php7 +php7-mod-filter +php7-fpm +php7-mod-ctype +php7-mod-dom +php7-mod-fileinfo +php7-mod-session +php7-mod-curl +php7-mod-gd +php7-mod-json \
+	DEPENDS:=@x86_64 @(PACKAGE_luci-ssl-nginx||PACKAGE_luci-nginx) +php7 +php7-mod-filter +php7-fpm +php7-mod-ctype +php7-mod-dom +php7-mod-fileinfo +php7-mod-session +php7-mod-curl +php7-mod-gd +php7-mod-json \
 	+php7-mod-mbstring +php7-mod-opcache +php7-mod-sockets +php7-mod-pdo-mysql +php7-mod-mysqli +php7-mod-exif +php7-mod-xml \
 	+php7-mod-openssl +php7-mod-zip +mariadb-common +mariadb-server-base +mariadb-server +mariadb-client-base +mariadb-client \
 	+@BUILD_PATENTED +ffmpeg +libx264 +imagemagick
