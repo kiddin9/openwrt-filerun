@@ -25,6 +25,8 @@ endef
 
 define Package/filerun/conffiles
 /etc/config/filerun
+/etc/nginx/conf.d/filerun.conf
+/etc/php7/custom.ini
 endef
 
 define Build/Compile
