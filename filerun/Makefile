@@ -5,7 +5,7 @@ PKG_VERSION:=2019_12_25
 PKG_RELEASE:=20200514
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://raw.githubusercontent.com/garypang13/FileRun/master
+PKG_SOURCE_URL:=https://github.com/garypang13/openwrt-filerun/releases/download/$(PKG_VERSION)/
 PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_MAINTAINER:=GaryPang <https://github.com/garypang13/openwrt-filerun>
