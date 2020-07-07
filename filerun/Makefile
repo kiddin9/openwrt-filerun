@@ -4,10 +4,10 @@ PKG_NAME:=filerun
 PKG_VERSION:=2019_12_25
 PKG_RELEASE:=20200514
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/garypang13/openwrt-filerun/releases/download/$(PKG_VERSION)/
-PKG_HASH:=skip
+PKG_FILE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_URL:=http://www.filerun.com/download-latest
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_HASH:=skip
 PKG_MAINTAINER:=GaryPang <https://github.com/garypang13/openwrt-filerun>
 
 include $(INCLUDE_DIR)/package.mk
@@ -27,6 +27,15 @@ define Package/filerun/conffiles
 /etc/config/filerun
 /etc/nginx/conf.d/filerun.conf
 /etc/php7/custom.ini
+endef
+
+define Build/Prepare
+	if [ ! -f $(DL_DIR)/$(PKG_FILE) ] ; then \
+		curl -f --connect-timeout 20 --retry 5 --location --insecure $(PKG_URL) -o $(DL_DIR)/$(PKG_FILE); \
+	fi
+	rm -r $(PKG_BUILD_DIR)
+	mkdir -p $(PKG_BUILD_DIR)
+	unzip $(DL_DIR)/$(PKG_FILE) -d $(PKG_BUILD_DIR)
 endef
 
 define Build/Compile
