@@ -41,6 +41,11 @@ endef
 define Build/Compile
 endef
 
+define Package/luci-app-filerun/extra_provides
+    echo 'libc.so.6'; \
+    echo 'librt.so.1';
+endef
+
 define Package/filerun/install
 	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/init.d $(1)/etc/nginx/conf.d $(1)/etc/php7
 	$(INSTALL_CONF) ./files/filerun.config $(1)/etc/config/filerun
