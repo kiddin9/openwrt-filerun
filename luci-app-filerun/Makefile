@@ -8,15 +8,11 @@ LUCI_PKGARCH:=all
 
 PKG_LICENSE:=Apache-2.0
 
-define Package/filerun/conffiles
-/etc/mysql/conf.d/custom.cnf
-endef
-
-include $(TOPDIR)/feeds/luci/luci.mk
-
 define Package/luci-app-filerun/extra_provides
     echo 'libc.so.6'; \
     echo 'librt.so.1';
 endef
+
+include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
