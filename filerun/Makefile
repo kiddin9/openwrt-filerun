@@ -27,6 +27,7 @@ define Package/filerun/conffiles
 /etc/config/filerun
 /etc/nginx/conf.d/filerun.conf
 /etc/php7/custom.ini
+/etc/mysql/conf.d/custom.cnf	
 endef
 
 define Build/Prepare
@@ -41,7 +42,7 @@ endef
 define Build/Compile
 endef
 
-define Package/luci-app-filerun/extra_provides
+define Package/filerun/extra_provides
     echo 'libc.so.6'; \
     echo 'librt.so.1';
 endef
@@ -51,7 +52,8 @@ define Package/filerun/install
 	$(INSTALL_CONF) ./files/filerun.config $(1)/etc/config/filerun
 	$(INSTALL_BIN) ./files/filerun.init $(1)/etc/init.d/filerun
 	$(INSTALL_DATA) ./files/filerun_nginx.conf $(1)/etc/nginx/conf.d/filerun.conf
-	$(INSTALL_DATA) ./files/custom.ini $(1)/etc/php7/custom.ini
+	$(INSTALL_DATA) ./files/custom_php.ini $(1)/etc/php7/custom.ini
+	$(INSTALL_DATA) ./files/custom_mysql.ini $(1)/etc/mysql/conf.d/custom.cnf
 	$(INSTALL_DIR) $(1)/www/filerun
 	$(CP) \
 		$(PKG_BUILD_DIR)/{a,cron,css,customizables,images,js,logout,oauth2,ocs,oembed,panel,sounds,sso,system,weblinks,wl} \
