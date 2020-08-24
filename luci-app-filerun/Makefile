@@ -8,10 +8,6 @@ LUCI_PKGARCH:=all
 
 PKG_LICENSE:=Apache-2.0
 
-define Package/luci-app-filerun/conffiles	
-/etc/mysql/conf.d/custom.cnf	
-endef
-
 define Package/luci-app-filerun/extra_provides
     echo 'libc.so.6'; \
     echo 'librt.so.1';
