@@ -48,7 +48,7 @@ define Package/filerun/extra_provides
 endef
 
 define Package/filerun/install
-	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/init.d $(1)/etc/nginx/conf.d $(1)/etc/php7
+	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/init.d $(1)/etc/nginx/conf.d $(1)/etc/php7 $(1)/etc/mysql/conf.d
 	$(INSTALL_CONF) ./files/filerun.config $(1)/etc/config/filerun
 	$(INSTALL_BIN) ./files/filerun.init $(1)/etc/init.d/filerun
 	$(INSTALL_DATA) ./files/filerun_nginx.conf $(1)/etc/nginx/conf.d/filerun.conf
